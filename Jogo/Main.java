@@ -29,7 +29,7 @@ public class Main {
             System.out.println("\nEscolha a coluna que você quer mexer: ");
             int coluna = read.nextInt();
 
-            if(linha < 0 || linha > 7 || coluna < 0 || coluna > 7){
+            if(linha < 0 || linha > 7 || coluna < 0 || coluna > 7 || jogo[linha][coluna] == 0){
                 System.out.println("\nDigite uma linha e coluna válida!");
             }else{
                 System.out.println("\nVocê quer ir pra esquerda ou direita?");
@@ -72,7 +72,7 @@ public class Main {
             System.out.println("\nEscolha a coluna que você quer mexer: ");
             int coluna = read.nextInt();
 
-            if(linha < 0 || linha > 7 || coluna < 0 || coluna > 7){
+            if(linha < 0 || linha > 7 || coluna < 0 || coluna > 7 || jogo[linha][coluna] == 0){
                 System.out.println("\nDigite uma linha e coluna válida!");
             }else{
                 System.out.println("\nVocê quer ir pra esquerda ou direita?");
