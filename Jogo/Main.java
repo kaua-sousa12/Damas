@@ -22,7 +22,12 @@ public class Main {
         boolean jogadaValida = false;
         System.out.println("\nJogador da peça preta: ");
 
+
+
         do {
+
+
+
             System.out.println("\nEscolha a linha que você quer mexer: ");
             int linha = read.nextInt();
 
@@ -139,6 +144,94 @@ public class Main {
                 }
             }
         }
+    }
+
+
+    public static void VerificarDama(int [][] jogo){
+
+        for (int i = 0; i < jogo.length; i++) {
+          for (int j = 0; j < jogo[i].length; j++) {
+
+
+              if(jogo[i][j] == 1 && i == 0){
+                  jogo[i][j] = 3;
+
+                  System.out.println("Parabens sua peça virou dama");
+              }
+              if(jogo[i][j] == 2 && i == 7){
+                  jogo[i][j] = 4;
+
+                  System.out.println("Parabens sua peça virou dama");
+              }
+          }
+
+        }
+
+    }
+
+
+    public static void AndarDama(int[][] jogo, int linha, int coluna){
+
+        Scanner scanner = new Scanner(System.in);
+
+        boolean jogadaValida = false;
+
+        do {
+            System.out.println("\nVocê quer ir para:");
+            System.out.println("frente-esquerda");
+            System.out.println("frente-direita");
+            System.out.println("tras-esquerda");
+            System.out.println("tras-direita");
+
+                String opcao = scanner.next();
+
+                switch (opcao.toLowerCase()){
+                    case "frente esquerda":
+                        if(coluna == 0 || jogo[linha + 1][coluna - 1] == 2){
+                            System.out.println("\nMovimento inválido, tente novamente.");
+                        }else{
+                            jogo[linha + 1][coluna - 1] = 2;
+                            jogo[linha][coluna] = 0;
+                            jogadaValida = true;
+                        }
+                        break;
+                    case "frente direita":
+                        if(coluna == 7 || jogo[linha + 1][coluna + 1] == 2){
+                            System.out.println("\nMovimento inválido, tente novamente.");
+                        }else{
+                            jogo[linha + 1][coluna + 1] = 2;
+                            jogo[linha][coluna] = 0;
+                            jogadaValida = true;
+                        }
+                        break;
+
+                    case "tras-esquerda":
+                        if(linha ==7 || coluna ==0 || jogo[linha + 1][coluna - 1] != 0){
+                            System.out.println("Movimento invalido, tente novamente.");
+                        }else{
+                            jogo[linha + 1][coluna - 1] = jogo[linha][coluna];
+                            jogo[linha][coluna] = 0;
+                            jogadaValida = true;
+                        }
+                        break;
+
+                    case "tras-direita":
+                        if (linha ==0 || coluna ==7 || jogo[linha + 1][coluna + 1] != 0){
+                            System.out.println("Movimento invalido, tente novamente.");
+                        }else{
+                            jogo[linha + 1][coluna + 1] = jogo[linha][coluna];
+                            jogo[linha][coluna] = 0;
+                            jogadaValida = true;
+                        }
+
+                }
+
+        }while (!jogadaValida);
+
+
+
+
+
     }
 
     public static void imprimirMatriz(int[][] jogo){
