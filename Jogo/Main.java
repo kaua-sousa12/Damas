@@ -37,6 +37,13 @@ public class Main {
             if(linha < 0 || linha > 7 || coluna < 0 || coluna > 7 || jogo[linha][coluna] == 0){
                 System.out.println("\nDigite uma linha e coluna válida!");
             }else{
+
+            }
+                if(jogo[linha][coluna] == 4) {
+                    AndarDama(jogo, linha, coluna);
+                    return;
+                }
+
                 System.out.println("\nVocê quer ir pra esquerda ou direita?");
                 String opcao = read.next();
 
@@ -60,7 +67,7 @@ public class Main {
                         }
                         break;
                 }
-            }
+
         }while (!jogadaValida);
     }
 
@@ -80,6 +87,12 @@ public class Main {
             if(linha < 0 || linha > 7 || coluna < 0 || coluna > 7 || jogo[linha][coluna] == 0){
                 System.out.println("\nDigite uma linha e coluna válida!");
             }else{
+
+                if(jogo[linha][coluna] == 3) {
+                    AndarDama(jogo, linha, coluna);
+                    return;
+                }
+
                 System.out.println("\nVocê quer ir pra esquerda ou direita?");
                 String opcao = read.next();
 
@@ -178,12 +191,12 @@ public class Main {
 
         do {
             System.out.println("\nVocê quer ir para:");
-            System.out.println("frente-esquerda");
-            System.out.println("frente-direita");
-            System.out.println("tras-esquerda");
-            System.out.println("tras-direita");
+            System.out.println("frente esquerda");
+            System.out.println("frente direita");
+            System.out.println("tras esquerda");
+            System.out.println("tras direita");
 
-                String opcao = scanner.next();
+                String opcao = scanner.nextLine();
 
                 switch (opcao.toLowerCase()){
                     case "frente esquerda":
