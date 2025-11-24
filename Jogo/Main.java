@@ -11,6 +11,19 @@ public class MenuJogo {
     public void exibirMenu() {
         int opcao;
 
+
+System.out.println("██████╗  █████╗ ███╗   ███╗ █████╗ ");
+System.out.println("██╔══██╗██╔══██╗████╗ ████║██╔══██╗╝");
+System.out.println("██████╔╝███████║██╔████╔██║███████║");
+System.out.println("██╔══██╗██╔══██║██║╚██╔╝██║██╔══██║");
+System.out.println("██████╔╝██║  ██║██║ ╚═╝ ██║██║  ██║");
+System.out.println("╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝");
+
+
+
+
+
+     
         do {
             System.out.println("\n===== MENU DO JOGO =====");
             System.out.println("1 - Instruções");
