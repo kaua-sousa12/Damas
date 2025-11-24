@@ -1,10 +1,106 @@
 import java.util.Scanner;
-// Kauã Sousa Silva
-// Eduardo Mendonça dos Santos
-// João Pedro Gama
 
-public class Main {
+public class MenuJogo {
+
+    Scanner scanner = new Scanner(System.in);
+
+    public void exibirMenu() {
+        int opcao;
+
+        do {
+            System.out.println("\n===== MENU DO JOGO =====");
+            System.out.println("1 - Instruções");
+            System.out.println("2 - Jogar");
+            System.out.println("3 - Créditos");
+            System.out.println("4 - Sair");
+            System.out.print("Escolha uma opção: ");
+            opcao = scanner.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    instrucoes();
+                    break;
+                case 2:
+                    Jogo jogo = new Jogo(); // Cria o objeto da classe Jogo
+                    jogo.IniciarJogo();     // Chama o metofo da classe jogo
+                    break;
+                case 3:
+                    creditos();
+                    break;
+                case 4:
+                    sair();
+                    break;
+                default:
+                    System.out.println("Opção inválida! Tente novamente.");
+            }
+
+        } while (opcao != 4);
+    }
+
+    public void instrucoes() {
+        System.out.println("\n--- INSTRUÇÕES ---");
+        System.out.println("\n--- ♟️ INSTRUÇÕES DO JOGO DE DAMAS (Versão Programada) ---");
+        System.out.println("O objetivo é capturar todas as peças do adversário ou bloqueá-lo.");
+        System.out.println("----------------------------------------------------------");
+
+        System.out.println("### CÓDIGO DAS PEÇAS NO TABULEIRO:");
+        System.out.println("0: Vazio");
+        System.out.println("1: Peça Branca (Normal) / 3: Dama Branca");
+        System.out.println("2: Peça Preta (Normal) / 4: Dama Preta");
+        System.out.println();
+
+        System.out.println("### 1. MOVIMENTO BÁSICO");
+        System.out.println("  - Peças Normais: Movem-se uma casa na diagonal, APENAS para frente.");
+        System.out.println("    - Branca (1): Apenas para CIMA (Linhas menores).");
+        System.out.println("    - Preta (2): Apenas para BAIXO (Linhas maiores).");
+        System.out.println("  - Dama (3 e 4): Move-se para frente e para trás, qualquer número de casas na diagonal vazia.");
+        System.out.println();
+
+        System.out.println("### 2. CAPTURA ⚔️");
+        System.out.println("  - Captura Obrigatória: (Não imposta no código) Você deve capturar se puder.");
+        System.out.println("  - Peças Normais: Capturam pulando uma peça inimiga para uma casa vazia.");
+        System.out.println("    - Podem capturar tanto para frente quanto para trás.");
+        System.out.println("  - Dama: Captura uma única peça inimiga a qualquer distância na diagonal.");
+        System.out.println("    - Deve PARAR obrigatoriamente na primeira casa vazia após o inimigo capturado.");
+        System.out.println("  - Restrição: É proibido saltar sobre duas peças seguidas.");
+        System.out.println();
+
+        System.out.println("### 3. PROMOÇÃO (COROAÇÃO) 👑");
+        System.out.println("  - Peça Branca (1) vira Dama (3) ao alcançar a Linha 0 (topo).");
+        System.out.println("  - Peça Preta (2) vira Dama (4) ao alcançar a Linha 7 (base).");
+        System.out.println();
+
+        System.out.println("### 4. VENCEDOR");
+        System.out.println("  - Vence quem capturar todas as peças do adversário.");
+    }
+
+    public void creditos() {
+        System.out.println("\n--- CRÉDITOS ---");
+        System.out.println("Jogo desenvolvido por: ");
+        System.out.println(" Eduardo dos Santos");
+        System.out.println(" Kauã Souza");
+        System.out.println(" João Pedro");
+    }
+
+    public void sair() {
+        System.out.println("\nSaindo do jogo... Até mais!");
+    }
+
     public static void main(String[] args) {
+        MenuJogo menu = new MenuJogo();
+        menu.exibirMenu();
+    }
+}
+
+
+
+class Jogo {
+
+    // Kauã Sousa Silva
+    // Eduardo Mendonça dos Santos
+    // João Pedro Gama
+
+    public void IniciarJogo(){
         int[][] jogo = new int[8][8];
 
         String verificarVencedor;
@@ -40,6 +136,7 @@ public class Main {
         boolean jogadaValida = false;
         System.out.println("\nJogador da peça preta: ");
 
+        
         do {
             System.out.println("\nEscolha a linha que você quer mexer: ");
             int linha = read.nextInt();
@@ -70,7 +167,7 @@ public class Main {
                             System.out.println("\nMovimento inválido, tente novamente.");
 
                         } else {
-                            // captura peça branca (1) ou dama branca (3)
+                         
                             if ((jogo[linha + 1][coluna - 1] == 1 || jogo[linha + 1][coluna - 1] == 3)
                                     && jogo[linha + 2][coluna - 2] == 0) {
 
@@ -87,7 +184,7 @@ public class Main {
                                 continue;
 
                             } else {
-                                // movimento normal
+                              
                                 jogo[linha + 1][coluna - 1] = 2;
                                 jogo[linha][coluna] = 0;
                                 jogadaValida = true;
@@ -100,7 +197,7 @@ public class Main {
                             System.out.println("\nMovimento inválido, tente novamente.");
                         } else {
 
-                            // captura branca
+                          
                             if ((jogo[linha + 1][coluna + 1] == 1 || jogo[linha + 1][coluna + 1] == 3)
                                     && jogo[linha + 2][coluna + 2] == 0) {
 
@@ -134,6 +231,7 @@ public class Main {
         boolean jogadaValida = false;
         System.out.println("\nJogador da peça branca: ");
 
+      
         do {
             System.out.println("\nEscolha a linha que você quer mexer: ");
             int linha = read.nextInt();
@@ -141,12 +239,11 @@ public class Main {
             System.out.println("\nEscolha a coluna que você quer mexer: ");
             int coluna = read.nextInt();
 
-            // valida entrada
             if (linha < 0 || linha > 7 || coluna < 0 || coluna > 7 || jogo[linha][coluna] == 0) {
                 System.out.println("\nDigite uma linha e coluna válida!");
             } else {
 
-                // caso seja dama branca
+              
                 if (jogo[linha][coluna] == 3) {
                     jogadaDamaBranca(jogo, linha, coluna);
                     jogadaValida = true;
@@ -163,7 +260,7 @@ public class Main {
                             System.out.println("\nMovimento inválido, tente novamente.");
                         } else {
 
-                            // captura peça preta (2) ou dama preta (4)
+                        
                             if ((jogo[linha - 1][coluna - 1] == 2 || jogo[linha - 1][coluna - 1] == 4)
                                     && jogo[linha - 2][coluna - 2] == 0) {
 
@@ -191,7 +288,7 @@ public class Main {
                             System.out.println("\nMovimento inválido, tente novamente.");
                         } else {
 
-                            // captura
+                           
                             if ((jogo[linha - 1][coluna + 1] == 2 || jogo[linha - 1][coluna + 1] == 4)
                                     && jogo[linha - 2][coluna + 2] == 0) {
 
@@ -218,7 +315,7 @@ public class Main {
         } while (!jogadaValida);
     }
 
-    // preenche tabuleiro padrão
+  
     public static void preencherMatriz(int[][] jogo) {
         // peças pretas
         for (int i = 0; i < 3; i++) {
@@ -247,7 +344,7 @@ public class Main {
         }
     }
 
-    // verifica se um dos lados ficou sem peças
+  
     public static String verificarVencedor(int[][] jogo) {
         boolean temPreta = false;
         boolean temBranca = false;
@@ -306,12 +403,12 @@ public class Main {
         while (!jogadaValida) {
 
             System.out.println("""
-                    Escolha a direção da Dama:
-                    1 - Cima Esquerda
-                    2 - Cima Direita
-                    3 - Baixo Esquerda
-                    4 - Baixo Direita
-                    """);
+                Escolha a direção da Dama:
+                1 - Cima Esquerda
+                2 - Cima Direita
+                3 - Baixo Esquerda
+                4 - Baixo Direita
+                """);
 
             int opcao = read.nextInt();
 
@@ -320,7 +417,7 @@ public class Main {
 
             int passoLinha = 0, passoColuna = 0;
 
-            // converte escolha numa direção (diagonal)
+          
             switch (opcao) {
                 case 1 -> { passoLinha = -1; passoColuna = -1; }
                 case 2 -> { passoLinha = -1; passoColuna = 1; }
@@ -338,29 +435,28 @@ public class Main {
 
             boolean caminhoValido = true;
 
-            // percorre cada casa do caminho
+           
             for (int i = 1; i <= posicoes; i++) {
 
                 int novaLinha = linha + i * passoLinha;
                 int novaColuna = coluna + i * passoColuna;
 
-                // fora do tabuleiro
                 if (novaLinha < 0 || novaLinha > 7 || novaColuna < 0 || novaColuna > 7) {
                     caminhoValido = false;
                     break;
                 }
 
-                // casa vazia → só andar
+                
                 if (jogo[novaLinha][novaColuna] == 0) {
                     continue;
                 }
 
-                // encontrou inimigo (2 ou 4)
+               
                 if (jogo[novaLinha][novaColuna] == 2 || jogo[novaLinha][novaColuna] == 4) {
 
                     inimigosEncontrados++;
 
-                    // se houver um inimigo e a próxima casa não for vazia → dois inimigos seguidos
+                   
                     if (i < posicoes) {
                         int proxLinha = linha + (i + 1) * passoLinha;
                         int proxColuna = coluna + (i + 1) * passoColuna;
@@ -374,14 +470,14 @@ public class Main {
                     ultimaLinhaInimigo = novaLinha;
                     ultimaColunaInimigo = novaColuna;
 
-                    // só pode capturar 1 por jogada
+                    
                     if (inimigosEncontrados > 1) {
                         caminhoValido = false;
                         break;
                     }
 
                 } else {
-                    // encontrou peça amiga → ilegal
+                   
                     caminhoValido = false;
                     break;
                 }
@@ -396,13 +492,13 @@ public class Main {
             int linhaDestino = linha + posicoes * passoLinha;
             int colunaDestino = coluna + posicoes * passoColuna;
 
-            // destino deve estar vazio
+            
             if (jogo[linhaDestino][colunaDestino] != 0) {
                 System.out.println("\nCasa final ocupada!");
                 continue;
             }
 
-            // se houve captura, a dama deve parar imediatamente depois
+           
             if (inimigosEncontrados == 1) {
                 int distInimigo = Math.abs(ultimaLinhaInimigo - linha);
 
@@ -431,12 +527,12 @@ public class Main {
         while (!jogadaValida) {
 
             System.out.println("""
-                    Escolha a direção da Dama:
-                    1 - Cima Esquerda
-                    2 - Cima Direita
-                    3 - Baixo Esquerda
-                    4 - Baixo Direita
-                    """);
+                Escolha a direção da Dama:
+                1 - Cima Esquerda
+                2 - Cima Direita
+                3 - Baixo Esquerda
+                4 - Baixo Direita
+                """);
 
             int opcao = read.nextInt();
 
