@@ -1,4 +1,7 @@
 import java.util.Scanner;
+// Kauã Sousa Silva
+// Eduardo Mendonça dos Santos
+// João Pedro Gama
 
 public class Main {
     public static void main(String[] args) {
