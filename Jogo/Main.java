@@ -1,5 +1,9 @@
 import java.util.Scanner;
 
+ // Kauã Sousa Silva
+    // Eduardo Mendonça dos Santos
+    // João Pedro Gama
+
 public class MenuJogo {
 
     Scanner scanner = new Scanner(System.in);
@@ -96,9 +100,7 @@ public class MenuJogo {
 
 class Jogo {
 
-    // Kauã Sousa Silva
-    // Eduardo Mendonça dos Santos
-    // João Pedro Gama
+   
 
     public void IniciarJogo(){
         int[][] jogo = new int[8][8];
